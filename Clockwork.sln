@@ -1,7 +1,9 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clockwork.API", "Clockwork.API\Clockwork.API.csproj", "{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clockwork.API", "Clockwork.API\Clockwork.API.csproj", "{157AD769-0CFE-4D7C-9884-987F7C9D36BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clockwork.Web", "Clockwork.Web\Clockwork.Web.csproj", "{6C746601-B1E6-4A18-8FCB-55582976384F}"
 EndProject
@@ -13,10 +15,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157AD769-0CFE-4D7C-9884-987F7C9D36BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157AD769-0CFE-4D7C-9884-987F7C9D36BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157AD769-0CFE-4D7C-9884-987F7C9D36BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157AD769-0CFE-4D7C-9884-987F7C9D36BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C746601-B1E6-4A18-8FCB-55582976384F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C746601-B1E6-4A18-8FCB-55582976384F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C746601-B1E6-4A18-8FCB-55582976384F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -25,5 +27,11 @@ Global
 		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33BE9FF1-71FB-44FC-A42B-5E1FF7B01C89}
 	EndGlobalSection
 EndGlobal
