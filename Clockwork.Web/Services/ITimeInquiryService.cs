@@ -4,7 +4,7 @@ namespace Clockwork.Web.Services
 {
     public interface ITimeInquiryService
     {
-        TimeInquiryModel Create(string timeZoneStandardName);
+        TimeInquiryModel Create(string timeZoneInfoId);
         PagedResult<TimeInquiryModel> GetAll(int pageNumber, int pageSize);
         TimeInquiryModel GetById(int id);
     }

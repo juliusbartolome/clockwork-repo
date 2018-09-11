@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clockwork.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(ClockworkContext))]
-    [Migration("20180911041103_InitialCreate")]
+    [Migration("20180911214120_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace Clockwork.Infrastructure.EFCore.Migrations
 
                     b.Property<string>("IpAddress");
 
-                    b.Property<string>("TimeZoneStandardName");
+                    b.Property<string>("TimeZoneInfoId");
 
                     b.Property<DateTime>("UtcDateTime");
 

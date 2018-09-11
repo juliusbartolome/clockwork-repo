@@ -43,13 +43,13 @@ namespace Clockwork.API.Controllers
         public IActionResult Post([FromBody]TimeInquiryPostDto timeInquiryPostDto)
         {
             var ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            var timeZoneStandardName = timeInquiryPostDto.TimeZoneStandardName;
-            if (string.IsNullOrEmpty(timeZoneStandardName))
-                timeZoneStandardName = TimeZoneInfo.Local.StandardName;
+            var timeZoneInfoId = timeInquiryPostDto.TimeZoneInfoId;
+            if (string.IsNullOrEmpty(timeZoneInfoId))
+                timeZoneInfoId = TimeZoneInfo.Local.Id;
 
             try
             {
-                var createdEntity = _timeInquiryService.RecordTimeInquiry(ipAddress, timeZoneStandardName);
+                var createdEntity = _timeInquiryService.RecordTimeInquiry(ipAddress, timeZoneInfoId);
                 _logger.LogInformation($"Successfully created a new time inquiry {nameof(createdEntity.Id)}.");
                 return CreatedAtAction(nameof(GetById), new { id = createdEntity.Id }, createdEntity.Adapt<TimeInquiryGetDto>());
             }

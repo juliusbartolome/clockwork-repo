@@ -10,7 +10,7 @@ namespace Clockwork.Infrastructure.EFCore.Models
     {
         public int Id { get; set; }
         public DateTime UtcDateTime { get; set; }
-        public string TimeZoneStandardName { get; set; }
+        public string TimeZoneInfoId { get; set; }
         public string IpAddress { get; set; }
     }
 }

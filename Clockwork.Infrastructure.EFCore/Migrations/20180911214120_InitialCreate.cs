@@ -14,7 +14,7 @@ namespace Clockwork.Infrastructure.EFCore.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UtcDateTime = table.Column<DateTime>(nullable: false),
-                    TimeZoneStandardName = table.Column<string>(nullable: true),
+                    TimeZoneInfoId = table.Column<string>(nullable: true),
                     IpAddress = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

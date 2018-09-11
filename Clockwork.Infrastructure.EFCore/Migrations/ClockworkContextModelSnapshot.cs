@@ -23,7 +23,7 @@ namespace Clockwork.Infrastructure.EFCore.Migrations
 
                     b.Property<string>("IpAddress");
 
-                    b.Property<string>("TimeZoneStandardName");
+                    b.Property<string>("TimeZoneInfoId");
 
                     b.Property<DateTime>("UtcDateTime");
 

@@ -17,10 +17,10 @@ namespace Clockwork.Domain.Validations
             if (string.IsNullOrEmpty(entity.IpAddress))
                 return false;
 
-            if (string.IsNullOrEmpty(entity.TimeZoneStandardName))
+            if (string.IsNullOrEmpty(entity.TimeZoneInfoId))
                 return false;
 
-            if (!TimeZoneInfo.GetSystemTimeZones().Any(tz => tz.StandardName == entity.TimeZoneStandardName))
+            if (!TimeZoneInfo.GetSystemTimeZones().Any(tz => tz.Id == entity.TimeZoneInfoId))
                 return false;
 
             return true;

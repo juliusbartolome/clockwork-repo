@@ -2,7 +2,6 @@
 using Clockwork.Domain.Repositories;
 using Clockwork.Domain.Services;
 using Clockwork.Domain.Shared;
-using Clockwork.Domain.Utilities;
 using System;
 
 namespace Clockwork.Application.TimeInquiries
@@ -32,16 +31,16 @@ namespace Clockwork.Application.TimeInquiries
             return _timeInquiryRepository.GetById(id);
         }
 
-        public TimeInquiryEntity RecordTimeInquiry(string ipAddress, string timeZoneStandardName)
+        public TimeInquiryEntity RecordTimeInquiry(string ipAddress, string timeZoneInfoId)
         {
             if (string.IsNullOrEmpty(ipAddress))
                 throw new ArgumentException("Cannot be null or empty.", nameof(ipAddress));
 
-            var currentTimeZoneInfo = TimeZoneUtility.ResolveTimeZone(timeZoneStandardName);
+            var currentTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZoneInfoId);
             if (currentTimeZoneInfo == null)
-                throw new ArgumentException($"Invalid {nameof(timeZoneStandardName)} and cannot resolve to a proper {nameof(TimeZoneInfo)}.", nameof(timeZoneStandardName));
+                throw new ArgumentException($"Invalid {nameof(timeZoneInfoId)} and cannot resolve to a proper {nameof(TimeZoneInfo)}.", nameof(timeZoneInfoId));
 
-            var entity = new TimeInquiryEntity { IpAddress = ipAddress, UtcDateTime = DateTime.UtcNow, TimeZoneStandardName = timeZoneStandardName };
+            var entity = new TimeInquiryEntity { IpAddress = ipAddress, UtcDateTime = DateTime.UtcNow, TimeZoneInfoId = timeZoneInfoId };
             _timeInquiryRepository.Create(entity);
 
             return entity;

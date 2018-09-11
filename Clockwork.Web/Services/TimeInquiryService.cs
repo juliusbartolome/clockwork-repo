@@ -20,9 +20,9 @@ namespace Clockwork.Web.Services
             return JsonConvert.DeserializeObject<PagedResult<TimeInquiryModel>>(responseJson);
         }
 
-        public TimeInquiryModel Create(string timeZoneStandardName)
+        public TimeInquiryModel Create(string timeZoneInfoId)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(new TimeInquiryModel { TimeZoneStandardName = timeZoneStandardName }), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonConvert.SerializeObject(new TimeInquiryModel { TimeZoneInfoId = timeZoneInfoId }), Encoding.UTF8, "application/json");
             var response = SharedHttpClient.Instance.PostAsync(BASE_API_URL, content).Result;
 
             if (!response.IsSuccessStatusCode)

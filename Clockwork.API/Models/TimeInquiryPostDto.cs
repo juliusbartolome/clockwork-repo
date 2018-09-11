@@ -7,6 +7,6 @@ namespace Clockwork.API.Models
 {
     public class TimeInquiryPostDto
     {
-        public string TimeZoneStandardName { get; set; }
+        public string TimeZoneInfoId { get; set; }
     }
 }

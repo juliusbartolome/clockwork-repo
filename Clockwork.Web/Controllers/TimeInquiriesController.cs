@@ -24,7 +24,7 @@ namespace Clockwork.Web.Controllers
             ViewBag.TimeInquiryPage = new StaticPagedList<TimeInquiryModel>(pagedList.PageItems, pageNumber, PAGE_SIZE, pagedList.TotalItemsCount);
 
             var vm = new TimeInquiryViewModel();
-            vm.SelectedTimeZoneInfoStandardName = ViewBag.SelectedTimeZoneInfoStandardName ?? TimeZoneInfo.Local.StandardName;
+            vm.SelectedTimeZoneInfoId = ViewBag.SelectedTimeZoneInfoId ?? TimeZoneInfo.Local.Id;
             return View(vm);
         }
 
@@ -32,14 +32,14 @@ namespace Clockwork.Web.Controllers
         [HttpPost]
         public ActionResult Post(FormCollection collection)
         {
-            var selectedTimeZoneInfoStandardName = collection["SelectedTimeZoneInfoStandardName"];
+            var selectedTimeZoneInfoId = collection["SelectedTimeZoneInfoId"];
             try
             {
-                _timeInquiryService.Create(ViewBag.SelectedTimeZoneInfoStandardName);
+                _timeInquiryService.Create(ViewBag.SelectedTimeZoneInfoId);
             }
             catch { }
 
-            return RedirectToAction("Index", new { SelectedTimeZoneInfoStandardName = selectedTimeZoneInfoStandardName });
+            return RedirectToAction("Index", new { SelectedTimeZoneInfoId = selectedTimeZoneInfoId });
         }
     }
 }
