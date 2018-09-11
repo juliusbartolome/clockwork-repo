@@ -32,10 +32,10 @@ namespace Clockwork.Application.TimeInquiries
 
         public TimeInquiryEntity RecordTimeInquiry(string ipAddress, string timeZoneStandardName)
         {
-            if (!string.IsNullOrEmpty(ipAddress))
+            if (string.IsNullOrEmpty(ipAddress))
                 throw new ArgumentException("Cannot be null or empty.", nameof(ipAddress));
 
-            var currentTimeZoneInfo = TimeZoneUtilities.ResolveTimeZone(timeZoneStandardName);
+            var currentTimeZoneInfo = TimeZoneUtility.ResolveTimeZone(timeZoneStandardName);
             if (currentTimeZoneInfo == null)
                 throw new ArgumentException($"Invalid {nameof(timeZoneStandardName)} and cannot resolve to a proper {nameof(TimeZoneInfo)}.", nameof(timeZoneStandardName));
 
