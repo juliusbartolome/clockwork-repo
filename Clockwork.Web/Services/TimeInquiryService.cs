@@ -14,7 +14,7 @@ namespace Clockwork.Web.Services
 
         public PagedResult<TimeInquiryModel> GetAll(int pageNumber, int pageSize)
         {
-            var url = $"{BASE_API_URL}? pageNumber={pageNumber}&pageSize={pageSize}";
+            var url = $"{BASE_API_URL}?pageNumber={pageNumber}&pageSize={pageSize}";
             var responseJson = SharedHttpClient.Instance.GetStringAsync(url).Result;
 
             return JsonConvert.DeserializeObject<PagedResult<TimeInquiryModel>>(responseJson);
