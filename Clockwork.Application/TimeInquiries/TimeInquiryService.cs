@@ -3,10 +3,7 @@ using Clockwork.Domain.Repositories;
 using Clockwork.Domain.Services;
 using Clockwork.Domain.Shared;
 using Clockwork.Domain.Utilities;
-using Clockwork.Domain.Validations;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Clockwork.Application.TimeInquiries
 {

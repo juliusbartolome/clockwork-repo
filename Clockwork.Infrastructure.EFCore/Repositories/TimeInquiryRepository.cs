@@ -3,10 +3,7 @@ using Clockwork.Domain.Repositories;
 using Clockwork.Domain.Shared;
 using Clockwork.Infrastructure.EFCore.Models;
 using Mapster;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Clockwork.Infrastructure.EFCore.Repositories
 {

@@ -39,8 +39,6 @@ namespace Clockwork.API.Controllers
             return Ok(retrievedEntities);
         }
 
-
-
         [HttpPost]
         public IActionResult Post([FromBody]TimeInquiryPostDto timeInquiryPostDto)
         {
