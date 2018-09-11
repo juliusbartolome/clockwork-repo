@@ -12,13 +12,5 @@ namespace Clockwork.API.Models
         public DateTime UtcDateTime { get; set; }
         public string TimeZoneStandardName { get; set; }
         public string IpAddress { get; set; }
-        public DateTime ServerTime
-        {
-            get
-            {
-                var timeZoneInfo = TimeZoneUtility.ResolveTimeZone(TimeZoneStandardName) ?? TimeZoneInfo.Local;
-                return TimeZoneInfo.ConvertTimeFromUtc(UtcDateTime, timeZoneInfo);
-            }
-        }
     }
 }
