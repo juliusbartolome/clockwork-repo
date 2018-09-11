@@ -10,6 +10,7 @@ namespace Clockwork.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            NinjectConfig.RegisterBindings();
         }
     }
 }
