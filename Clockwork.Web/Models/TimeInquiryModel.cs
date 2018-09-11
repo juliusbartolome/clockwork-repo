@@ -13,7 +13,7 @@ namespace Clockwork.Web.Models
         {
             get
             {
-                var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(TimeZoneInfoId);
+                var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(TimeZoneInfoId ?? TimeZoneInfo.Local.Id);
                 return TimeZoneInfo.ConvertTimeFromUtc(UtcDateTime, timeZoneInfo);
             }
         }

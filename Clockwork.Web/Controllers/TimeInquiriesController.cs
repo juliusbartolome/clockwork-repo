@@ -35,7 +35,7 @@ namespace Clockwork.Web.Controllers
             var selectedTimeZoneInfoId = collection["SelectedTimeZoneInfoId"];
             try
             {
-                _timeInquiryService.Create(ViewBag.SelectedTimeZoneInfoId);
+                _timeInquiryService.Create(selectedTimeZoneInfoId);
             }
             catch { }
 

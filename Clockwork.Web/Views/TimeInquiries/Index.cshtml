@@ -6,7 +6,7 @@
 
 @{
     ViewBag.Title = "Time Inquiries";
-    Model.SelectedTimeZoneInfoId = Request["SelectedTimeZoneInfoStandardName"] ?? Model.SelectedTimeZoneInfoId;
+    Model.SelectedTimeZoneInfoId = Request["SelectedTimeZoneInfoId"] ?? Model.SelectedTimeZoneInfoId;
 }
 
 <div class="container">
@@ -20,7 +20,7 @@
                 @using (Html.BeginForm("Post", "TimeInquiries", FormMethod.Post, new { @class = "form-inline" }))
                 {
                     @Html.DropDownListFor(model => model.SelectedTimeZoneInfoId,
-                       new SelectList(TimeZoneInfo.GetSystemTimeZones().Select(tz => new { Id = tz.Id, Name = string.Format("(UTC{0:+00;-00}:{1:00}) {2}", tz.BaseUtcOffset.Hours, tz.BaseUtcOffset.Minutes, tz.StandardName) }), "Id", "Name"),
+                       new SelectList(TimeZoneInfo.GetSystemTimeZones().Select(tz => new { Id = tz.Id, Name = string.Format("(UTC{0:+00;-00}:{1:00}) {2}", tz.BaseUtcOffset.Hours, tz.BaseUtcOffset.Minutes, tz.Id) }), "Id", "Name"),
                        new { @class = "form-control" })
 
                     <input type="submit" value="Get Time" class="btn btn-primary" />
