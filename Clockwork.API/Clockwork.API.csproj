@@ -20,12 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Core" Version="2.0.1" />
   </ItemGroup>
@@ -37,5 +31,11 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\HomeController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Clockwork.Application\Clockwork.Application.csproj" />
+    <ProjectReference Include="..\Clockwork.Domain\Clockwork.Domain.csproj" />
+    <ProjectReference Include="..\Clockwork.Infrastructure.EFCore\Clockwork.Infrastructure.EFCore.csproj" />
   </ItemGroup>
 </Project>
