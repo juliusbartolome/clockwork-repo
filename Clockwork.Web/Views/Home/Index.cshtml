@@ -3,8 +3,8 @@
         <div class="col-lg-8 mx-auto">
             <h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
             <p class="lead">Vestibulum pulvinar augue vel ante fringilla ultricies. Phasellus porttitor tincidunt.</p>
-            <button type="submit" class="btn btn-primary" onclick="UserAction()">Get the time</button>
-            <p id="output"></p>
+            @Html.ActionLink("Go to Time Inquiry", "Index", "TimeInquiries", null, new { @class = "btn btn-primary" })
+            <p></p>
             <ul>
                 <li>Clickable nav links that smooth scroll to page sections</li>
                 <li>Responsive behavior when clicking nav links perfect for a one page website</li>
@@ -14,19 +14,3 @@
         </div>
     </div>
 </div>
-
- <script>
-     function UserAction() {
-         var xhttp = new XMLHttpRequest();
-         xhttp.onreadystatechange = function () {
-             if (this.readyState == 4 && this.status == 201) {
-                 document.getElementById('output').innerHTML = this.responseText;
-             }
-         };
-         xhttp.open('POST', 'http://localhost:50594/api/timeinquiries', true);
-         xhttp.setRequestHeader('Access-Control-Allow-Origin', '*')
-         xhttp.setRequestHeader('Content-type', 'application/json');
-         xhttp.send('{"timeZoneStandardName": "China Standard Time"}');
-
-     }
- </script>

@@ -1,0 +1,56 @@
+﻿@using Clockwork.Web.Models;
+@using X.PagedList.Mvc;
+@using X.PagedList;
+@using X.PagedList.Mvc.Bootstrap4
+@model IEnumerable<TimeInquiryModel>
+
+@{
+    ViewBag.Title = "Time Inquiries";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 mx-auto">
+            <h2>@ViewBag.Title </h2>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UtcDateTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TimeZoneStandardName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IpAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ServerTime)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in ViewBag.TimeInquiryPage)
+                {
+                    <tr>
+                        <td>
+                            @item.UtcDateTime
+                        </td>
+                        <td>
+                            @item.TimeZoneStandardName
+                        </td>
+                        <td>
+                            @item.IpAddress
+                        </td>
+                        <td>
+                            @item.ServerTime
+                        </td>
+                    </tr>
+                }
+            </table>
+            @Html.PagedListPager((IPagedList)ViewBag.TimeInquiryPage, page => Url.Action("Index", new { page }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+        </div>
+    </div>
+</div>
