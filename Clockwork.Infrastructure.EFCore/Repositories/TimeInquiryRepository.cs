@@ -21,7 +21,7 @@ namespace Clockwork.Infrastructure.EFCore.Repositories
 
         public PagedResult<TimeInquiryEntity> GetAll(int pageNumber, int pageSize)
         {
-            var pageItems = EntitySet.Skip(pageNumber - 1).Take(pageSize).ProjectToType<TimeInquiryEntity>().ToList();
+            var pageItems = EntitySet.OrderByDescending(e => e.UtcDateTime).Skip((pageNumber - 1) * pageSize).Take(pageSize).ProjectToType<TimeInquiryEntity>().ToList();
             var totalItemsCount = EntitySet.Count();
 
             return new PagedResult<TimeInquiryEntity>(pageItems, pageNumber, pageSize, totalItemsCount);
