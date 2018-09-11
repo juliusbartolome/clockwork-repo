@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Clockwork.Domain.Utilities
 {
-    public static class TimeZoneUtilities
+    public static class TimeZoneUtility
     {
         public static TimeZoneInfo ResolveTimeZone(string timeZoneStandardName)
         {
