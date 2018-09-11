@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Clockwork.API.Models;
 using Clockwork.Domain.Services;
 using Microsoft.Extensions.Logging;
+using Mapster;
 
 namespace Clockwork.API.Controllers
 {
@@ -18,8 +19,16 @@ namespace Clockwork.API.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        public IActionResult GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
         [HttpPost]
-        public IActionResult Post(TimeInquiryPostDto timeInquiryPostDto)
+        public IActionResult Post([FromBody]TimeInquiryPostDto timeInquiryPostDto)
         {
             var ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
             var timeZoneStandardName = timeInquiryPostDto.TimeZoneStandardName;
@@ -30,7 +39,7 @@ namespace Clockwork.API.Controllers
             {
                 var createdEntity = _timeInquiryService.RecordTimeInquiry(ipAddress, timeZoneStandardName);
                 _logger.LogInformation($"Successfully created a new time inquiry {nameof(createdEntity.Id)}.");
-                return Ok(createdEntity);
+                return CreatedAtAction(nameof(GetById), new { id = createdEntity.Id }, createdEntity.Adapt<TimeInquiryGetDto>());
             }
             catch (Exception ex)
             {
