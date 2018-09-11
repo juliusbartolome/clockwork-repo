@@ -2,32 +2,47 @@
 @using X.PagedList.Mvc;
 @using X.PagedList;
 @using X.PagedList.Mvc.Bootstrap4
-@model IEnumerable<TimeInquiryModel>
+@model TimeInquiryViewModel
 
 @{
     ViewBag.Title = "Time Inquiries";
+    Model.SelectedTimeZoneInfoStandardName = Request["SelectedTimeZoneInfoStandardName"] ?? Model.SelectedTimeZoneInfoStandardName;
 }
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12 mx-auto">
             <h2>@ViewBag.Title </h2>
+        </div>
 
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
+        <div class="row">
+            <div class="col-lg-12">
+                @using (Html.BeginForm("Post", "TimeInquiries", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                    @Html.DropDownListFor(model => model.SelectedTimeZoneInfoStandardName,
+                       new SelectList(TimeZoneInfo.GetSystemTimeZones().Select(tz => new { Id = tz.StandardName, Name = string.Format("(UTC{0:+00;-00}:{1:00}) {2}", tz.BaseUtcOffset.Hours, tz.BaseUtcOffset.Minutes, tz.StandardName) }), "Id", "Name"),
+                       new { @class = "form-control" })
+
+                    <input type="submit" value="Get Time" class="btn btn-primary" />
+
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-12 mx-auto">
             <table class="table">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.UtcDateTime)
+                        UTC Date Time
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.TimeZoneStandardName)
+                        Time Zone
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.IpAddress)
+                        IP Address
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ServerTime)
+                        Server Time
                     </th>
                     <th></th>
                 </tr>
