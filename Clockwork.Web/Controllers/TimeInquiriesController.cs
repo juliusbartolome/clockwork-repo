@@ -1,6 +1,9 @@
 ﻿using Clockwork.Web.Services;
 using X.PagedList;
 using System.Web.Mvc;
+using Clockwork.Web.Models;
+using System;
+using System.Linq;
 
 namespace Clockwork.Web.Controllers
 {
@@ -17,81 +20,26 @@ namespace Clockwork.Web.Controllers
         public ActionResult Index(int? page)
         {
             var pageNumber = page ?? 1;
-            ViewBag.TimeInquiryPage = _timeInquiryService.GetAll(pageNumber, PAGE_SIZE).PageItems.ToPagedList(1, PAGE_SIZE);
+            var pagedList = _timeInquiryService.GetAll(pageNumber, PAGE_SIZE);
+            ViewBag.TimeInquiryPage = new StaticPagedList<TimeInquiryModel>(pagedList.PageItems, pageNumber, PAGE_SIZE, pagedList.TotalItemsCount);
 
-            return View();
-        }
-
-        // GET: TimeInquiries/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: TimeInquiries/Create
-        public ActionResult Create()
-        {
-            return View();
+            var vm = new TimeInquiryViewModel();
+            vm.SelectedTimeZoneInfoStandardName = ViewBag.SelectedTimeZoneInfoStandardName ?? TimeZoneInfo.Local.StandardName;
+            return View(vm);
         }
 
         // POST: TimeInquiries/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Post(FormCollection collection)
         {
+            var selectedTimeZoneInfoStandardName = collection["SelectedTimeZoneInfoStandardName"];
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                _timeInquiryService.Create(ViewBag.SelectedTimeZoneInfoStandardName);
             }
-            catch
-            {
-                return View();
-            }
-        }
+            catch { }
 
-        // GET: TimeInquiries/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: TimeInquiries/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: TimeInquiries/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: TimeInquiries/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", new { SelectedTimeZoneInfoStandardName = selectedTimeZoneInfoStandardName });
         }
     }
 }

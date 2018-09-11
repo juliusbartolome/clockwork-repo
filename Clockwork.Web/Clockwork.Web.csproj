@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Models\PagedResultModel.cs" />
+    <Compile Include="Models\TimeInquiryViewModel.cs" />
     <Compile Include="Models\TimeInquiryModel.cs" />
     <Compile Include="Services\ITimeInquiryService.cs" />
     <Compile Include="Services\TimeInquiryService.cs" />
