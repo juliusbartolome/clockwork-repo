@@ -29,5 +29,10 @@ namespace Clockwork.Infrastructure.EFCore.Repositories
 
             return new PagedResult<TimeInquiryEntity>(pageItems, pageNumber, pageSize, totalItemsCount);
         }
+
+        public TimeInquiryEntity GetById(int id)
+        {
+            return EntitySet.Find(id);
+        }
     }
 }

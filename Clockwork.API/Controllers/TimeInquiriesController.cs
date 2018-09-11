@@ -20,9 +20,16 @@ namespace Clockwork.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(int? id)
         {
-            throw new NotImplementedException();
+            if (!id.HasValue)
+                return BadRequest();
+
+            var retrievedEntity = _timeInquiryService.GetById(id.Value);
+            if (retrievedEntity == null)
+                return NotFound();
+
+            return Ok(retrievedEntity);
         }
 
 

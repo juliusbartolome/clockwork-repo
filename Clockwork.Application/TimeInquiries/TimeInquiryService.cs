@@ -30,6 +30,11 @@ namespace Clockwork.Application.TimeInquiries
             return _timeInquiryRepository.GetAll(pageNumber, pageSize);
         }
 
+        public TimeInquiryEntity GetById(int id)
+        {
+            return _timeInquiryRepository.GetById(id);
+        }
+
         public TimeInquiryEntity RecordTimeInquiry(string ipAddress, string timeZoneStandardName)
         {
             if (string.IsNullOrEmpty(ipAddress))
