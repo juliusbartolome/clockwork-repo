@@ -19,7 +19,7 @@ namespace Clockwork.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetById(int? id)
         {
             if (!id.HasValue)
@@ -30,6 +30,13 @@ namespace Clockwork.API.Controllers
                 return NotFound();
 
             return Ok(retrievedEntity);
+        }
+
+        [HttpGet]
+        public IActionResult GetAll(int? pageNumber = 1, int? pageSize = 10)
+        {
+            var retrievedEntities = _timeInquiryService.GetAll(pageNumber.Value, pageSize.Value);
+            return Ok(retrievedEntities);
         }
 
 

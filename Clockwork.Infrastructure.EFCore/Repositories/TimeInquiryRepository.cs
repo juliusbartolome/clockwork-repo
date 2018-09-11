@@ -32,7 +32,7 @@ namespace Clockwork.Infrastructure.EFCore.Repositories
 
         public TimeInquiryEntity GetById(int id)
         {
-            return EntitySet.Find(id);
+            return EntitySet.Find(id).Adapt<TimeInquiryEntity>();
         }
     }
 }
