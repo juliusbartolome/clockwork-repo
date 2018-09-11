@@ -8,7 +8,7 @@ namespace Clockwork.Domain.Services
 {
     public interface ITimeInquiryService
     {
-        TimeInquiryEntity RecordTimeInquiry(string ipAddress);
+        TimeInquiryEntity RecordTimeInquiry(string ipAddress, string timeZoneStandardName);
         PagedResult<TimeInquiryEntity> GetAll(int pageNumber, int pageSize);
     }
 }
